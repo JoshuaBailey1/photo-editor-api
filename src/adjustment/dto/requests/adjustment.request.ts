@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class BrightnessRequest {
+export class AdjustmentRequest {
   @IsNotEmpty()
   @IsString()
   filePath: string;

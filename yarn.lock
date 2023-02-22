@@ -684,6 +684,14 @@
     "@jimp/utils" "^0.22.4"
     tinycolor2 "^1.6.0"
 
+"@jimp/plugin-color@^0.22.5":
+  version "0.22.5"
+  resolved "https://registry.yarnpkg.com/@jimp/plugin-color/-/plugin-color-0.22.5.tgz#6952a01b3f45cfba2a29a9cb0c7dac0d68ce6568"
+  integrity sha512-wLezGVziB/99Uq4EgctxFjB0ADePDgUYX4zCySXlEF4dtKAKp0hw07nOFbLjIc4zdyIgt/HNeYKzMqNVq5zEgA==
+  dependencies:
+    "@jimp/utils" "^0.22.5"
+    tinycolor2 "^1.6.0"
+
 "@jimp/plugin-contain@^0.22.4":
   version "0.22.4"
   resolved "https://registry.yarnpkg.com/@jimp/plugin-contain/-/plugin-contain-0.22.4.tgz#ecc5a440cef99ba8882e3670616bd8cc5b400fd0"
@@ -863,6 +871,13 @@
   version "0.22.4"
   resolved "https://registry.yarnpkg.com/@jimp/utils/-/utils-0.22.4.tgz#3d420178f628c732805297a29eb6e64c6896e6ad"
   integrity sha512-EPaBMNg4NvVXnMpSFJEsdCQqdSVU2ACreAL+Ipkq19C/FkDEj9Q10t6Mjx8zOe/AAjBQj1vTALS/DykcHOn4bQ==
+  dependencies:
+    regenerator-runtime "^0.13.3"
+
+"@jimp/utils@^0.22.5":
+  version "0.22.5"
+  resolved "https://registry.yarnpkg.com/@jimp/utils/-/utils-0.22.5.tgz#45985e0840dc7d72fa7d569dfc547a5c7985c829"
+  integrity sha512-R3ZRck82Q5tzC6rOu0iUu9lp7HZKCbucbWbL8dDkxB10fEMb+h5OCFw6PtZzzM277UzL6KP95t1vNxsAlm+pQw==
   dependencies:
     regenerator-runtime "^0.13.3"
 
