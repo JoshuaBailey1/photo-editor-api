@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as Jimp from 'jimp';
 
 @Injectable()
-export class BrightnessService {
+export class AdjustmentService {
   async adjustBrightness(
     filePath: string,
     imageName: string,
