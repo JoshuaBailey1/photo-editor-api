@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import * as Jimp from 'jimp';
+const Jimp = require('jimp');
 
 @Injectable()
 export class AdjustmentService {
@@ -42,11 +42,7 @@ export class AdjustmentService {
   ): Promise<any> {
     const image = await Jimp.read(`${filePath}/${imageName}`);
 
-    image.color([
-      { apply: 'red', params: [intensity] },
-      { apply: 'green', params: [intensity] },
-      { apply: 'blue', params: [intensity] },
-    ]);
+    image.color([{ apply: 'saturate', params: [intensity] }]);
 
     const newImageName = 'test.' + image.getExtension();
 

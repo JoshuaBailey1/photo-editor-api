@@ -1,6 +1,6 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { AdjustmentService } from './adjustment.service';
-import { AdjustmentRequest } from './dto/requests/brightness.request';
+import { AdjustmentRequest } from './dto/requests/adjustment.request';
 
 @Controller('adjustment')
 export class AdjustmentController {
