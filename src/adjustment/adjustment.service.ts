@@ -8,7 +8,7 @@ export class AdjustmentService {
     filePath: string,
     imageName: string,
     intensity: number,
-  ): Promise<any> {
+  ): Promise<string> {
     const image = await Jimp.read(`${filePath}/${imageName}`);
 
     image.brightness(intensity);
@@ -22,7 +22,7 @@ export class AdjustmentService {
     filePath: string,
     imageName: string,
     intensity: number,
-  ): Promise<any> {
+  ): Promise<string> {
     const image = await Jimp.read(`${filePath}/${imageName}`);
 
     image.contrast(intensity);
@@ -36,7 +36,7 @@ export class AdjustmentService {
     filePath: string,
     imageName: string,
     intensity: number,
-  ): Promise<any> {
+  ): Promise<string> {
     const image = await Jimp.read(`${filePath}/${imageName}`);
 
     image.color([{ apply: 'saturate', params: [intensity] }]);
