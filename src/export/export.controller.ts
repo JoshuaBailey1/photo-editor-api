@@ -14,8 +14,8 @@ export class ExportController {
         request.filePath,
         request.fileName,
       );
-    } catch (e) {
-      throw new BadRequestException(e.message);
+    } catch (error) {
+      throw new BadRequestException(error.message);
     }
   }
 }

@@ -8,8 +8,8 @@ export class ExportService {
     filePath: string,
     fileName: string,
   ): Promise<void> {
-    const toBuffer = Buffer.from(image, 'base64');
-    const exportedImage = await Jimp.read(toBuffer);
+    const buffer = Buffer.from(image, 'base64');
+    const exportedImage = await Jimp.read(buffer);
     exportedImage.write(
       `${filePath}/${fileName}.${exportedImage.getExtension()}`,
     );
