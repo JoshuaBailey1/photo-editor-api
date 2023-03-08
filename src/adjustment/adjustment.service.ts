@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { getBase64 } from '../helpers/image.conversion';
 const Jimp = require('jimp');
 
 @Injectable()
@@ -7,47 +8,41 @@ export class AdjustmentService {
     filePath: string,
     imageName: string,
     intensity: number,
-  ): Promise<any> {
+  ): Promise<string> {
     const image = await Jimp.read(`${filePath}/${imageName}`);
 
     image.brightness(intensity);
 
-    const newImageName = 'test.' + image.getExtension();
+    const base64 = getBase64(image);
 
-    image.write(`${filePath}/${newImageName}`);
-
-    return;
+    return base64;
   }
 
   async adjustContrast(
     filePath: string,
     imageName: string,
     intensity: number,
-  ): Promise<any> {
+  ): Promise<string> {
     const image = await Jimp.read(`${filePath}/${imageName}`);
 
     image.contrast(intensity);
 
-    const newImageName = 'test.' + image.getExtension();
+    const base64 = getBase64(image);
 
-    image.write(`${filePath}/${newImageName}`);
-
-    return;
+    return base64;
   }
 
   async adjustSaturation(
     filePath: string,
     imageName: string,
     intensity: number,
-  ): Promise<any> {
+  ): Promise<string> {
     const image = await Jimp.read(`${filePath}/${imageName}`);
 
     image.color([{ apply: 'saturate', params: [intensity] }]);
 
-    const newImageName = 'test.' + image.getExtension();
+    const base64 = getBase64(image);
 
-    image.write(`${filePath}/${newImageName}`);
-
-    return;
+    return base64;
   }
 }

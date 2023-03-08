@@ -7,7 +7,7 @@ export class AdjustmentController {
   constructor(private readonly adjustmentService: AdjustmentService) {}
 
   @Post('brightness')
-  async adjustBrightness(@Body() request: AdjustmentRequest): Promise<any> {
+  async adjustBrightness(@Body() request: AdjustmentRequest): Promise<string> {
     try {
       return await this.adjustmentService.adjustBrightness(
         request.filePath,
@@ -20,7 +20,7 @@ export class AdjustmentController {
   }
 
   @Post('contrast')
-  async adjustContrast(@Body() request: AdjustmentRequest): Promise<any> {
+  async adjustContrast(@Body() request: AdjustmentRequest): Promise<string> {
     try {
       return await this.adjustmentService.adjustContrast(
         request.filePath,
@@ -33,7 +33,7 @@ export class AdjustmentController {
   }
 
   @Post('saturation')
-  async adjustSaturation(@Body() request: AdjustmentRequest): Promise<any> {
+  async adjustSaturation(@Body() request: AdjustmentRequest): Promise<string> {
     try {
       return await this.adjustmentService.adjustSaturation(
         request.filePath,
