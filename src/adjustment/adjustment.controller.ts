@@ -1,4 +1,5 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import Jimp from 'jimp';
 import { AdjustmentService } from './adjustment.service';
 import { AdjustmentRequest } from './dto/requests/adjustment.request';
 
@@ -7,7 +8,7 @@ export class AdjustmentController {
   constructor(private readonly adjustmentService: AdjustmentService) {}
 
   @Post('brightness')
-  async adjustBrightness(@Body() request: AdjustmentRequest): Promise<any> {
+  async adjustBrightness(@Body() request: AdjustmentRequest): Promise<Jimp> {
     try {
       return await this.adjustmentService.adjustBrightness(
         request.filePath,
@@ -20,7 +21,7 @@ export class AdjustmentController {
   }
 
   @Post('contrast')
-  async adjustContrast(@Body() request: AdjustmentRequest): Promise<any> {
+  async adjustContrast(@Body() request: AdjustmentRequest): Promise<Jimp> {
     try {
       return await this.adjustmentService.adjustContrast(
         request.filePath,
@@ -33,7 +34,7 @@ export class AdjustmentController {
   }
 
   @Post('saturation')
-  async adjustSaturation(@Body() request: AdjustmentRequest): Promise<any> {
+  async adjustSaturation(@Body() request: AdjustmentRequest): Promise<Jimp> {
     try {
       return await this.adjustmentService.adjustSaturation(
         request.filePath,
