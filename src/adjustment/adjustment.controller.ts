@@ -10,8 +10,7 @@ export class AdjustmentController {
   async adjustBrightness(@Body() request: AdjustmentRequest): Promise<string> {
     try {
       return await this.adjustmentService.adjustBrightness(
-        request.filePath,
-        request.fileName,
+        request.image,
         request.intensity,
       );
     } catch (error) {
@@ -23,8 +22,7 @@ export class AdjustmentController {
   async adjustContrast(@Body() request: AdjustmentRequest): Promise<string> {
     try {
       return await this.adjustmentService.adjustContrast(
-        request.filePath,
-        request.fileName,
+        request.image,
         request.intensity,
       );
     } catch (error) {
@@ -36,8 +34,7 @@ export class AdjustmentController {
   async adjustSaturation(@Body() request: AdjustmentRequest): Promise<string> {
     try {
       return await this.adjustmentService.adjustSaturation(
-        request.filePath,
-        request.fileName,
+        request.image,
         request.intensity,
       );
     } catch (error) {

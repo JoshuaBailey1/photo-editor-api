@@ -9,9 +9,9 @@ export class ExportService {
     fileName: string,
   ): Promise<void> {
     const buffer = Buffer.from(image, 'base64');
-    const exportedImage = await Jimp.read(buffer);
-    exportedImage.write(
-      `${filePath}/${fileName}.${exportedImage.getExtension()}`,
+    const imageForExport = await Jimp.read(buffer);
+    imageForExport.write(
+      `${filePath}/${fileName}.${imageForExport.getExtension()}`,
     );
     return;
   }
