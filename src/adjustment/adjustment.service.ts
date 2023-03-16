@@ -1,48 +1,35 @@
+import { ColorActionName } from '@jimp/plugin-color';
 import { Injectable } from '@nestjs/common';
+import * as Jimp from 'jimp';
 import { getBase64 } from '../helpers/image.conversion';
-const Jimp = require('jimp');
-
 @Injectable()
 export class AdjustmentService {
-  async adjustBrightness(
-    filePath: string,
-    imageName: string,
-    intensity: number,
-  ): Promise<string> {
-    const image = await Jimp.read(`${filePath}/${imageName}`);
+  async adjustBrightness(image: string, intensity: number): Promise<string> {
+    const buffer = Buffer.from(image, 'base64');
+    const imageForAdjustment = await Jimp.read(buffer);
 
-    image.brightness(intensity);
+    imageForAdjustment.brightness(intensity);
 
-    const base64 = getBase64(image);
-
-    return base64;
+    return getBase64(imageForAdjustment);
   }
 
-  async adjustContrast(
-    filePath: string,
-    imageName: string,
-    intensity: number,
-  ): Promise<string> {
-    const image = await Jimp.read(`${filePath}/${imageName}`);
+  async adjustContrast(image: string, intensity: number): Promise<string> {
+    const buffer = Buffer.from(image, 'base64');
+    const imageForAdjustment = await Jimp.read(buffer);
 
-    image.contrast(intensity);
+    imageForAdjustment.contrast(intensity);
 
-    const base64 = getBase64(image);
-
-    return base64;
+    return getBase64(imageForAdjustment);
   }
 
-  async adjustSaturation(
-    filePath: string,
-    imageName: string,
-    intensity: number,
-  ): Promise<string> {
-    const image = await Jimp.read(`${filePath}/${imageName}`);
+  async adjustSaturation(image: string, intensity: number): Promise<string> {
+    const buffer = Buffer.from(image, 'base64');
+    const imageForAdjustment = await Jimp.read(buffer);
 
-    image.color([{ apply: 'saturate', params: [intensity] }]);
+    imageForAdjustment.color([
+      { apply: ColorActionName.SATURATE, params: [intensity] },
+    ]);
 
-    const base64 = getBase64(image);
-
-    return base64;
+    return getBase64(imageForAdjustment);
   }
 }
