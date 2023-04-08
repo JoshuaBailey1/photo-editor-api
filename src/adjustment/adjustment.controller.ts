@@ -41,4 +41,12 @@ export class AdjustmentController {
       throw new BadRequestException(error.message);
     }
   }
+
+  @Post('sharpness')
+  async adjustSharpness(@Body() request: AdjustmentRequest): Promise<string> {
+    return await this.adjustmentService.adjustSharpness(
+      request.image,
+      request.intensity,
+    );
+  }
 }
