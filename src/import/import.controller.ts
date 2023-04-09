@@ -1,4 +1,11 @@
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { ImportRequest } from './dto/requests/import.request';
 import { ImportService } from './import.service';
 
@@ -16,5 +23,10 @@ export class ImportController {
     } catch (error) {
       throw new BadRequestException(error.message);
     }
+  }
+
+  @Get('image/:imageType')
+  async getImages(@Param('imageType') imageType: string): Promise<string> {
+    return this.importService.getImageFromPexel(imageType);
   }
 }
