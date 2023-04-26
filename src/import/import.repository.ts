@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as imageToBase64 from 'image-to-base64';
+// import { Configuration, OpenAIApi } from 'openai';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable()
@@ -10,7 +11,7 @@ export class ImportRepository {
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
   ) {}
-  async getImageFromPexel(imageType: string) {
+  async getImageFromPexel(imageType: string): Promise<string> {
     const request = this.httpService.get(
       `https://api.pexels.com/v1/search?query=${imageType}`,
       {
@@ -35,5 +36,20 @@ export class ImportRepository {
     const fullBase64 = `data:image/${extension};base64, ${base64}`;
 
     return fullBase64;
+  }
+
+  async getImageFromOpenAI(imageType: string): Promise<string> {
+    const { Configuration, OpenAIApi } = require('openai');
+    const configuration = new Configuration({
+      apiKey: `${this.configService.get<string>('OpenAIAuth')}`,
+    });
+    const openai = new OpenAIApi(configuration);
+    const image = await openai.createImage({
+      prompt: imageType,
+      n: 1,
+      size: '1024x1024',
+      response_format: 'b64_json',
+    });
+    return `data:image/jpeg;base64, ${image.data.data[0].b64_json}`;
   }
 }
