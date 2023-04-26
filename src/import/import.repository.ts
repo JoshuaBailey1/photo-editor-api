@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as imageToBase64 from 'image-to-base64';
-// import { Configuration, OpenAIApi } from 'openai';
+import { Configuration, OpenAIApi } from 'openai';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable()
@@ -39,7 +39,6 @@ export class ImportRepository {
   }
 
   async getImageFromOpenAI(imageType: string): Promise<string> {
-    const { Configuration, OpenAIApi } = require('openai');
     const configuration = new Configuration({
       apiKey: `${this.configService.get<string>('OpenAIAuth')}`,
     });
