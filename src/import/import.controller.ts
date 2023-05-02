@@ -7,13 +7,13 @@ export class ImportController {
 
   @Get('image/:imageType')
   async getImages(@Param('imageType') imageType: string): Promise<string> {
-    return this.importService.getImageFromPexel(imageType);
+    return await this.importService.getImageFromPexel(imageType);
   }
 
   @Get('image/ai/:imageType')
   async getImagesFromAi(
     @Param('imageType') imageType: string,
   ): Promise<string> {
-    return this.importService.getImageFromOpenAI(imageType);
+    return await this.importService.getImageFromOpenAI(imageType);
   }
 }
